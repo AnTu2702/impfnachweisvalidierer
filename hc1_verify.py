@@ -46,11 +46,10 @@ class HC1Verify:
             decompressed = zlib.decompress(compressed)
             decoded = CoseMessage.decode(decompressed)
             decoded.key = CoseKey.from_dict({KpKty: KtyEC2, EC2KpCurve: P256, KpAlg: Es256, EC2KpX: self.key_x, EC2KpY: self.key_y})
+            payload = cbor2.loads(decoded.payload)
             
             claims = { "Issuer" : 1, "Issued At" : 6, "Experation time" : 4, "Health claims" : -260 }
             
-            payload = cbor2.loads(decoded.payload)
-
             health = payload[claims["Health claims"]]
             issuer = payload[claims["Issuer"]]
             issued = payload[claims["Issued At"]]
