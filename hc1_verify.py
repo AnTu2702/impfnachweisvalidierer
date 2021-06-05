@@ -54,7 +54,7 @@ class HC1Verify:
             issued = jsondata[claims["Issued At"]]
             expires = jsondata[claims["Experation time"]]
 
-            print(f"\r\nDecoding und Validating your token with given certificate...")
+            print(f"\r\nDecoding and validating your token with given certificate...")
             print(f"---------------------------------------------------------------------------------------------")
             print(json.dumps(health, indent=4, sort_keys=True, default=self._json_serial))
             print(f"---------------------------------------------------------------------------------------------")
