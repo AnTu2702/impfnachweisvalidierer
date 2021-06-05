@@ -48,3 +48,14 @@ Use as follows to validate:
     Experation time: 28.01.2022, 07:47:53
     Is valid: True
     ---------------------------------------------------------------------------------------------
+    
+Data from sample QR-Code:
+<table>
+  <tbody>
+    <tr>
+      <td><img src="./8DF9B1FB-9C12-4CCD-9562-858B2D0FB84B.png" width="280" height="600" /></td>
+      <td><img src="./AF54E9D9-255E-4C5A-85E2-A923D0491D5A.png" width="280" height="600" /></td>
+    </tr>
+  </tbody>
+</table>
+
