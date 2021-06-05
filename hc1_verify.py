@@ -57,9 +57,8 @@ class HC1Verify:
             expires = payload[claims["Experation time"]]
 
             print(f"\r\nDecoding und Validating your token with given certificate...")
-            health_json = json.dumps(health, indent=4, sort_keys=True, default=self._json_serial)
             print(f"---------------------------------------------------------------------------------------------")
-            print(health_json)
+            print(json.dumps(health, indent=4, sort_keys=True, default=self._json_serial))
             print(f"---------------------------------------------------------------------------------------------")
             print(f"Issuer: {issuer}")
             print(f"Issued At: {datetime.datetime.utcfromtimestamp(issued).strftime('%d.%m.%Y, %H:%M:%S')}")
