@@ -42,7 +42,7 @@ class HC1Verify:
 
     def verify(self, token):
 
-            compressed = b45decode(token.decode('utf-8'))
+            compressed = b45decode(token)
             decompressed = zlib.decompress(compressed)
             decoded = CoseMessage.decode(decompressed)
             decoded.key = CoseKey.from_dict({KpKty: KtyEC2, EC2KpCurve: P256, KpAlg: Es256, EC2KpX: self.key_x, EC2KpY: self.key_y})
@@ -75,7 +75,7 @@ def main(cert, token):
     try:
         hc1 = HC1Verify()
         hc1.load(cert)
-        hc1.verify(token.encode('utf-8'))
+        hc1.verify(token)
 
     except Exception as exc:
         e_tp, e_vl, e_tb = sys.exc_info()
