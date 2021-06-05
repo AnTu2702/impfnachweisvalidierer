@@ -58,8 +58,8 @@ class HC1Verify:
             print(f"---------------------------------------------------------------------------------------------")
 
 @click.command()
-@click.option('-c', '--cert', type=str, required=True, default='./demo-dsc.crt', help="da crt")
-@click.option('-t', '--token', type=str, required=True, help="da token")
+@click.option('-c', '--cert', type=str, required=True, default='./demo-dsc.crt', help="da cert...")
+@click.option('-t', '--token', type=str, required=True, help="da token...")
 
 def main(cert, token):
 
