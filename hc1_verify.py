@@ -45,14 +45,14 @@ class HC1Verify:
     def print(self, result):
 
         print(f"\r\nDecoding and validating your token with given certificate...")
-        print(f"---------------------------------------------------------------------------------------------")
+        print(f"--------------------------------------------------------------------------------------------------------")
         print(json.dumps(self.health, indent=4, sort_keys=True, ensure_ascii=False))
-        print(f"---------------------------------------------------------------------------------------------")
+        print(f"--------------------------------------------------------------------------------------------------------")
         print(f"Issuer: {self.issuer}")
         print(f"Issued At: {datetime.datetime.utcfromtimestamp(self.issued).strftime('%d.%m.%Y, %H:%M:%S')}")
         print(f"Experation time: {datetime.datetime.utcfromtimestamp(self.expires).strftime('%d.%m.%Y, %H:%M:%S')}")
         print(f"Is valid: {result} - Validation Key: {self.keyid}")
-        print(f"---------------------------------------------------------------------------------------------")
+        print(f"--------------------------------------------------------------------------------------------------------")
 
 @click.command()
 @click.option('-c', '--cert', type=str, required=True, default='./demo-dsc.crt', help="da cert...")
