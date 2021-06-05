@@ -16,6 +16,8 @@ class HC1Verify:
 
     def __init__(self):
 
+        self.keyid = None
+
         self.key_x = None
         self.key_y = None
 
@@ -34,7 +36,7 @@ class HC1Verify:
             pub = cert.public_key().public_numbers()
 
             fingerprint = cert.fingerprint(hashes.SHA256())
-            keyid = fingerprint[0:8]
+            self.keyid = fingerprint[0:8].hex().upper()
 
             self.key_x = pub.x.to_bytes(32, byteorder="big")
             self.key_y = pub.y.to_bytes(32, byteorder="big")
@@ -61,7 +63,7 @@ class HC1Verify:
             print(f"Issuer: {issuer}")
             print(f"Issued At: {datetime.datetime.utcfromtimestamp(issued).strftime('%d.%m.%Y, %H:%M:%S')}")
             print(f"Experation time: {datetime.datetime.utcfromtimestamp(expires).strftime('%d.%m.%Y, %H:%M:%S')}")
-            print(f"Is valid: {decoded.verify_signature()}")
+            print(f"Is valid: {decoded.verify_signature()} - Validation Key: {self.keyid}")
             print(f"---------------------------------------------------------------------------------------------")
 
 @click.command()
