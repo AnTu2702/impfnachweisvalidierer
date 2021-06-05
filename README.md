@@ -15,7 +15,7 @@ Use as follows to validate:
 
     cat demo-token.b45 | xargs python3 ./hc1_verify.py --cert demo-dsc.crt --token
 
-    Decoding und Validating your token with given certificate...
+    Decoding and validating your token with given certificate...
     ---------------------------------------------------------------------------------------------
     {
         "1": {
