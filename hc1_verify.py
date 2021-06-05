@@ -38,7 +38,7 @@ class HC1Verify:
             self.key_y = pub.y.to_bytes(32, byteorder="big")
 
             fingerprint = cert.fingerprint(hashes.SHA256())
-            self.keyid = fingerprint[0:8].hex().upper()
+            self.keyid = fingerprint[0:8].hex()
 
     def verify(self, token):
 
