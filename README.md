@@ -1,51 +1,35 @@
-# Trivial/rudimentary eHN-simplified implementation
+cat demo-token.b45 | xargs python3 ./hc1_verify.py --cert demo-dsc.crt --token
 
-Aligned with version 1.00 / 2021-4-14 of the spec:
-	https://github.com/ehn-digital-green-development/hcert-spec/blob/main/hcert_spec.md
-
-For round-trip testing of ```hc1_sign.py``` and ```hc1_verify.py``` take some
-JSON, e.g. ```{ "Foo" : "Bar }```, CBOR package, COSE sign, compress and base45
-convert it for use in a QR.
-
-1. COSE sign
-   1. compact the JSON into CBOR
-   1. wrap it into a payload (Health claim -260, add issuer/dates)
-   1. sign and package as a COSE message
-   1. ZLIB compress
-   1. Base45 encode 
-1. COSE verify     
-   1. Base45 decode
-   1. ZLIB decompress
-   1. check the signature on the COSE message
-   1. unpack the CBOR into JSON
-   1. unpack the payload and extract the issuer and dates
-   1. unpack the health claim and output as json.
-
-### Test Steps
-
-1. Generate the CSCA and DSC with ```./gen-csca-dsc.sh```	
-1. Run the command: ```echo "{'A': 1234}" | python3.8 hc1_sign.py | python3.8 hc1_verify.py```
-1. You should see the output: ```{"A": 1234}```
-
-```echo '{ "Foo":1, "Bar":{ "Field1": "a value",   "integer":1212112121 }}' | python3.8 hc1_sign.py | python3.8 hc1_verify.py prettyprint-json```
-
-Which should output:
-
-```
+Decoding und Validating your token with given certificate...
+---------------------------------------------------------------------------------------------
 {
-    "Foo": 1, 
-    "Bar": {
-        "Field1": "a value", 
-        "integer": 1212112121
-   }
+    "1": {
+        "dob": "1964-08-12",
+        "nam": {
+            "fn": "Mustermann",
+            "fnt": "MUSTERMANN",
+            "gn": "Erika",
+            "gnt": "ERIKA"
+        },
+        "t": [
+            {
+                "ci": "URN:UVCI:01DE/IZ12345A/5CWLU12RNOB9RXSEOP6FG8#W",
+                "co": "DE",
+                "dr": "2021-05-30T10:30:15Z",
+                "is": "Robert Koch-Institut",
+                "sc": "2021-05-30T10:12:22Z",
+                "tc": "Testzentrum K\u00f6ln Hbf",
+                "tg": "840539006",
+                "tr": "260415000",
+                "tt": "LP217198-3"
+            }
+        ],
+        "ver": "1.0.0"
+    }
 }
-```
-
-# Testing COSE from Austrian website
-
-Testing against the AT cases:
-
-1. Fetch the Base64 from https://dev.a-sit.at/certservice
-1. Remove the first 2 bytes and do
-
-   ```pbpaste| sed -e 's/^00//' | python3.8 hc1_verify.py --base64 --ignore-signature --cbor```
+---------------------------------------------------------------------------------------------
+Issuer: DE
+Issued At: 29.05.2021, 19:21:13
+Experation time: 28.01.2022, 07:47:53
+Is valid: True
+---------------------------------------------------------------------------------------------
