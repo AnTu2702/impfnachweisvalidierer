@@ -1,6 +1,4 @@
-import argparse, json, sys, zlib, click, cbor2, datetime
-
-from base45 import b45decode
+import argparse, json, sys, zlib, click, cbor2, base45, datetime
 
 from cryptography import x509
 from cryptography.hazmat.primitives import hashes
@@ -42,7 +40,7 @@ class HC1Verify:
 
     def verify(self, token):
 
-            compressed = b45decode(token)
+            compressed = base45.b45decode(token)
             decompressed = zlib.decompress(compressed)
             decoded = CoseMessage.decode(decompressed)
             decoded.key = CoseKey.from_dict({KpKty: KtyEC2, EC2KpCurve: P256, KpAlg: Es256, EC2KpX: self.key_x, EC2KpY: self.key_y})
