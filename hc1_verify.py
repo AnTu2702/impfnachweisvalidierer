@@ -19,12 +19,6 @@ class HC1Verify:
         self.key_x = None
         self.key_y = None
 
-    def _json_serial(self, obj):
-
-        if isinstance(obj, (datetime.datetime, datetime.date)):
-            return obj.isoformat()
-        raise TypeError ("Type %s not serializable" % type(obj))
-
     def load(self, cert):
 
         with open(cert, "rb") as file:
@@ -55,7 +49,7 @@ class HC1Verify:
 
             print(f"\r\nDecoding and validating your token with given certificate...")
             print(f"---------------------------------------------------------------------------------------------")
-            print(json.dumps(health, indent=4, sort_keys=True, default=self._json_serial))
+            print(json.dumps(health, indent=4, sort_keys=True, ensure_ascii=False))
             print(f"---------------------------------------------------------------------------------------------")
             print(f"Issuer: {issuer}")
             print(f"Issued At: {datetime.datetime.utcfromtimestamp(issued).strftime('%d.%m.%Y, %H:%M:%S')}")

@@ -33,7 +33,7 @@ Use as follows to validate:
                     "dr": "2021-05-30T10:30:15Z",
                     "is": "Robert Koch-Institut",
                     "sc": "2021-05-30T10:12:22Z",
-                    "tc": "Testzentrum K\u00f6ln Hbf",
+                    "tc": "Testzentrum Köln Hbf",
                     "tg": "840539006",
                     "tr": "260415000",
                     "tt": "LP217198-3"
