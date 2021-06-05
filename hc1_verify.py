@@ -34,28 +34,28 @@ class HC1Verify:
 
     def verify(self, token):
 
-            compressed = base45.b45decode(token)
-            decompressed = zlib.decompress(compressed)
-            cose = CoseMessage.decode(decompressed)
-            cose.key = CoseKey.from_dict({KpKty: KtyEC2, EC2KpCurve: P256, KpAlg: Es256, EC2KpX: self.key_x, EC2KpY: self.key_y})
-            jsondoc = cbor2.loads(cose.payload)
-            
-            claims = { "Issuer" : 1, "Issued At" : 6, "Experation time" : 4, "Health claims" : -260 }
+        compressed = base45.b45decode(token)
+        decompressed = zlib.decompress(compressed)
+        cose = CoseMessage.decode(decompressed)
+        cose.key = CoseKey.from_dict({KpKty: KtyEC2, EC2KpCurve: P256, KpAlg: Es256, EC2KpX: self.key_x, EC2KpY: self.key_y})
+        jsondoc = cbor2.loads(cose.payload)
+        
+        claims = { "Issuer" : 1, "Issued At" : 6, "Experation time" : 4, "Health claims" : -260 }
 
-            health = jsondoc[claims["Health claims"]]
-            issuer = jsondoc[claims["Issuer"]]
-            issued = jsondoc[claims["Issued At"]]
-            expires = jsondoc[claims["Experation time"]]
+        health = jsondoc[claims["Health claims"]]
+        issuer = jsondoc[claims["Issuer"]]
+        issued = jsondoc[claims["Issued At"]]
+        expires = jsondoc[claims["Experation time"]]
 
-            print(f"\r\nDecoding and validating your token with given certificate...")
-            print(f"---------------------------------------------------------------------------------------------")
-            print(json.dumps(health, indent=4, sort_keys=True, ensure_ascii=False))
-            print(f"---------------------------------------------------------------------------------------------")
-            print(f"Issuer: {issuer}")
-            print(f"Issued At: {datetime.datetime.utcfromtimestamp(issued).strftime('%d.%m.%Y, %H:%M:%S')}")
-            print(f"Experation time: {datetime.datetime.utcfromtimestamp(expires).strftime('%d.%m.%Y, %H:%M:%S')}")
-            print(f"Is valid: {cose.verify_signature()} - Validation Key: {self.keyid}")
-            print(f"---------------------------------------------------------------------------------------------")
+        print(f"\r\nDecoding and validating your token with given certificate...")
+        print(f"---------------------------------------------------------------------------------------------")
+        print(json.dumps(health, indent=4, sort_keys=True, ensure_ascii=False))
+        print(f"---------------------------------------------------------------------------------------------")
+        print(f"Issuer: {issuer}")
+        print(f"Issued At: {datetime.datetime.utcfromtimestamp(issued).strftime('%d.%m.%Y, %H:%M:%S')}")
+        print(f"Experation time: {datetime.datetime.utcfromtimestamp(expires).strftime('%d.%m.%Y, %H:%M:%S')}")
+        print(f"Is valid: {cose.verify_signature()} - Validation Key: {self.keyid}")
+        print(f"---------------------------------------------------------------------------------------------")
 
 @click.command()
 @click.option('-c', '--cert', type=str, required=True, default='./demo-dsc.crt', help="da cert...")
