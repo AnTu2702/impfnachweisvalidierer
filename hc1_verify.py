@@ -1,4 +1,4 @@
-import argparse, json, sys, zlib, click, cbor2, base45, datetime
+import click, json, sys, zlib, cbor2, base45, datetime
 
 from cryptography import x509
 from cryptography.hazmat.primitives import hashes
