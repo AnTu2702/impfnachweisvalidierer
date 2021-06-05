@@ -12,13 +12,6 @@ from cose.messages import CoseMessage
 
 class HC1Verify:
 
-    def __init__(self):
-
-        self.keyid = None
-
-        self.key_x = None
-        self.key_y = None
-
     def load(self, cert):
 
         with open(cert, "rb") as file:
