@@ -29,9 +29,9 @@ class HC1Verify:
 
         compressed = base45.b45decode(token)
         decompressed = zlib.decompress(compressed)
-        self.cose = CoseMessage.decode(decompressed)
-        self.cose.key = CoseKey.from_dict({KpKty: KtyEC2, EC2KpCurve: P256, KpAlg: Es256, EC2KpX: self.key_x, EC2KpY: self.key_y})
-        jsondoc = cbor2.loads(self.cose.payload)
+        cose = CoseMessage.decode(decompressed)
+        cose.key = CoseKey.from_dict({KpKty: KtyEC2, EC2KpCurve: P256, KpAlg: Es256, EC2KpX: self.key_x, EC2KpY: self.key_y})
+        jsondoc = cbor2.loads(cose.payload)
         
         claims = { "Issuer" : 1, "Issued At" : 6, "Experation time" : 4, "Health claims" : -260 }
 
@@ -40,7 +40,7 @@ class HC1Verify:
         self.issued = jsondoc[claims["Issued At"]]
         self.expires = jsondoc[claims["Experation time"]]
 
-        return self.cose.verify_signature()
+        return cose.verify_signature()
 
     def print(self, result):
 
