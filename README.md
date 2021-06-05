@@ -46,7 +46,7 @@ Use as follows to validate:
     Issuer: DE
     Issued At: 29.05.2021, 19:21:13
     Experation time: 28.01.2022, 07:47:53
-    Is valid: True - Validation Key: 0C4B15512BE91401
+    Is valid: True - Validation Key: 0c4b15512be91401
     ---------------------------------------------------------------------------------------------
     
 Data from sample QR-Code:
