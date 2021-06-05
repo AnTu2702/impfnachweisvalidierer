@@ -1,14 +1,16 @@
 import argparse, json, sys, zlib, click, cbor2, datetime
 
 from base45 import b45decode
+
+from cryptography import x509
+from cryptography.hazmat.primitives import hashes
+
 from cose.algorithms import Es256
 from cose.curves import P256
 from cose.keys import CoseKey
 from cose.keys.keyparam import KpAlg, EC2KpX, EC2KpY, EC2KpCurve, KpKty
 from cose.keys.keytype import KtyEC2
 from cose.messages import CoseMessage
-from cryptography import x509
-from cryptography.hazmat.primitives import hashes
 
 class HC1Verify:
 
