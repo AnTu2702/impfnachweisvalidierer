@@ -4,8 +4,7 @@ from base45 import b45decode
 from cose.algorithms import Es256
 from cose.curves import P256
 from cose.keys import CoseKey
-from cose.keys.keyparam import KpAlg, EC2KpX, EC2KpY, EC2KpCurve
-from cose.keys.keyparam import KpKty
+from cose.keys.keyparam import KpAlg, EC2KpX, EC2KpY, EC2KpCurve, KpKty
 from cose.keys.keytype import KtyEC2
 from cose.messages import CoseMessage
 from cryptography import x509
