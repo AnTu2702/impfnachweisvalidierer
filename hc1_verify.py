@@ -46,14 +46,14 @@ class HC1Verify:
             decompressed = zlib.decompress(compressed)
             decoded = CoseMessage.decode(decompressed)
             decoded.key = CoseKey.from_dict({KpKty: KtyEC2, EC2KpCurve: P256, KpAlg: Es256, EC2KpX: self.key_x, EC2KpY: self.key_y})
-            payload = cbor2.loads(decoded.payload)
+            jsondata = cbor2.loads(decoded.payload)
             
             claims = { "Issuer" : 1, "Issued At" : 6, "Experation time" : 4, "Health claims" : -260 }
-            
-            health = payload[claims["Health claims"]]
-            issuer = payload[claims["Issuer"]]
-            issued = payload[claims["Issued At"]]
-            expires = payload[claims["Experation time"]]
+
+            health = jsondata[claims["Health claims"]]
+            issuer = jsondata[claims["Issuer"]]
+            issued = jsondata[claims["Issued At"]]
+            expires = jsondata[claims["Experation time"]]
 
             print(f"\r\nDecoding und Validating your token with given certificate...")
             print(f"---------------------------------------------------------------------------------------------")
