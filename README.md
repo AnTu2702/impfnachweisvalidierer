@@ -13,7 +13,7 @@ Technological base mechanism:
 
 Use as follows to validate:
 
-    python3 ./hc1_verify.py --cert demo-dsc.crt --token "$(< demo-token.b45)"
+    python3 hc1_verify.py --cert demo-dsc.crt --token "$(< demo-token.b45)"
 
     Decoding and validating your token with given certificate...
     ---------------------------------------------------------------------------------------------
