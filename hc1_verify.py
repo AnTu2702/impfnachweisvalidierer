@@ -34,12 +34,11 @@ class HC1Verify:
 
             cert = x509.load_pem_x509_certificate(pem)
             pub = cert.public_key().public_numbers()
+            self.key_x = pub.x.to_bytes(32, byteorder="big")
+            self.key_y = pub.y.to_bytes(32, byteorder="big")
 
             fingerprint = cert.fingerprint(hashes.SHA256())
             self.keyid = fingerprint[0:8].hex().upper()
-
-            self.key_x = pub.x.to_bytes(32, byteorder="big")
-            self.key_y = pub.y.to_bytes(32, byteorder="big")
 
     def verify(self, token):
 
