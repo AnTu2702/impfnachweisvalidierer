@@ -58,13 +58,3 @@ Data from sample QR-Code:
     </tr>
   </tbody>
 </table>
-
-Frage: Machen wir uns eigentlich im Moment bereits Gedanken, wie die digitalen Impf-, Test- und Genesungsnachweise in Kürze zum Beispiel vom Zugpersonal mit bestehender Infrastruktur gelesen und validiert werden können?
-
-
-
-Das könnte zum Beispiel für die Bewirtung von Fahrgästen im ICE-Bordrestaurant sowohl für unsere Kollegen, als auch für die anderen Fahrgäste eine Rolle spielen. Ich nehme jetzt mal nicht an, dass wir hier Bord-Service und Zugbegleiter auf die Corona-Warn-App (V 2.3) oder die CovPassApp verweisen wollen? 
-
-
-
-Mir fallen da aber auch noch andere Anwendungsfälle ein...
