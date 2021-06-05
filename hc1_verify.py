@@ -42,9 +42,9 @@ class HC1Verify:
 
             compressed = base45.b45decode(token)
             decompressed = zlib.decompress(compressed)
-            decoded = CoseMessage.decode(decompressed)
-            decoded.key = CoseKey.from_dict({KpKty: KtyEC2, EC2KpCurve: P256, KpAlg: Es256, EC2KpX: self.key_x, EC2KpY: self.key_y})
-            jsondata = cbor2.loads(decoded.payload)
+            cose = CoseMessage.decode(decompressed)
+            cose.key = CoseKey.from_dict({KpKty: KtyEC2, EC2KpCurve: P256, KpAlg: Es256, EC2KpX: self.key_x, EC2KpY: self.key_y})
+            jsondata = cbor2.loads(cose.payload)
             
             claims = { "Issuer" : 1, "Issued At" : 6, "Experation time" : 4, "Health claims" : -260 }
 
@@ -60,7 +60,7 @@ class HC1Verify:
             print(f"Issuer: {issuer}")
             print(f"Issued At: {datetime.datetime.utcfromtimestamp(issued).strftime('%d.%m.%Y, %H:%M:%S')}")
             print(f"Experation time: {datetime.datetime.utcfromtimestamp(expires).strftime('%d.%m.%Y, %H:%M:%S')}")
-            print(f"Is valid: {decoded.verify_signature()} - Validation Key: {self.keyid}")
+            print(f"Is valid: {cose.verify_signature()} - Validation Key: {self.keyid}")
             print(f"---------------------------------------------------------------------------------------------")
 
 @click.command()
