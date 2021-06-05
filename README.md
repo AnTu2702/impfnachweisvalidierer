@@ -1,3 +1,18 @@
+Inspired by the following links:
+
+- https://github.com/ehn-digital-green-development/hcert-spec
+- https://github.com/ehn-digital-green-development/ehn-sign-verify-python-trivial
+- https://github.com/eu-digital-green-certificates/dgc-testdata
+- https://github.com/Digitaler-Impfnachweis/certification-apis
+- https://github.pathcheck.org/debug.html
+- https://dgc.a-sit.at/ehn/
+
+Technological base mechanism:
+
+<img src="https://github.com/ehn-digital-green-development/hcert-spec/blob/main/overview.png"/>
+
+Use as follows to validate:
+
     cat demo-token.b45 | xargs python3 ./hc1_verify.py --cert demo-dsc.crt --token
 
     Decoding und Validating your token with given certificate...
