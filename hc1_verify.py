@@ -33,12 +33,12 @@ class HC1Verify:
         cose.key = CoseKey.from_dict({KpKty: KtyEC2, EC2KpCurve: P256, KpAlg: Es256, EC2KpX: self.key_x, EC2KpY: self.key_y})
         jsondoc = cbor2.loads(cose.payload)
         
-        claims = { "Issuer" : 1, "Issued At" : 6, "Experation time" : 4, "Health claims" : -260 }
+        claims = { "Issuer" : 1, "Issued At" : 6, "Expiration time" : 4, "Health claims" : -260 }
 
         self.health = jsondoc[claims["Health claims"]]
         self.issuer = jsondoc[claims["Issuer"]]
         self.issued = jsondoc[claims["Issued At"]]
-        self.expires = jsondoc[claims["Experation time"]]
+        self.expires = jsondoc[claims["Expiration time"]]
 
         return cose.verify_signature()
 
@@ -50,7 +50,7 @@ class HC1Verify:
         print(f"--------------------------------------------------------------------------------------------------")
         print(f"Issuer: {self.issuer}")
         print(f"Issued At: {datetime.datetime.utcfromtimestamp(self.issued).strftime('%d.%m.%Y, %H:%M:%S')}")
-        print(f"Experation time: {datetime.datetime.utcfromtimestamp(self.expires).strftime('%d.%m.%Y, %H:%M:%S')}")
+        print(f"Expiration time: {datetime.datetime.utcfromtimestamp(self.expires).strftime('%d.%m.%Y, %H:%M:%S')}")
         print(f"Is valid: {result} - Validation Key: {self.keyid}")
         print(f"--------------------------------------------------------------------------------------------------")
 
