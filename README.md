@@ -2,6 +2,7 @@ Inspired by the following links:
 
 - https://github.com/ehn-digital-green-development/hcert-spec
 - https://github.com/ehn-digital-green-development/ehn-sign-verify-python-trivial
+- https://github.com/eu-digital-green-certificates/dgc-lib
 - https://github.com/eu-digital-green-certificates/dgc-testdata
 - https://github.com/Digitaler-Impfnachweis/certification-apis
 - https://github.pathcheck.org/debug.html
