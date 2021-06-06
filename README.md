@@ -50,6 +50,9 @@ Use as follows to validate:
     Is valid: True - Validation Key: 0c4b15512be91401
     --------------------------------------------------------------------------------------------------
     
+Since I don't know about any PKD Test Environment, I will use a direct trust establishement mechanis here for demonstration...
+<img src="./images/trust-framework_interoperability_certificates.png" width="1000"/>
+    
 Data from sample QR-Code:
 <table>
   <tbody>
