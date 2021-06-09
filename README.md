@@ -53,7 +53,7 @@ Use as follows to validate:
 Since I don't know about any PKD Test Environment, I will use a direct trust establishement mechanism here for demonstration...
 <img src="./images/trust-framework_interoperability_certificates.png" width="1000"/>
     
-Data from sample QR-Code:
+Data from sample QR-Code: (see demo-token.b45)
 <table>
   <tbody>
     <tr>
