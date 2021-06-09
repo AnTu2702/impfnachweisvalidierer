@@ -27,7 +27,7 @@ class HC1Verify:
 
     def verify(self, token):
 
-        compressed = base45.b45decode(token)
+        compressed = base45.b45decode(token[4:])
         decompressed = zlib.decompress(compressed)
         cose = CoseMessage.decode(decompressed)
         cose.key = CoseKey.from_dict({KpKty: KtyEC2, EC2KpCurve: P256, KpAlg: Es256, EC2KpX: self.key_x, EC2KpY: self.key_y})
