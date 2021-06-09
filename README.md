@@ -50,7 +50,7 @@ Use as follows to validate:
     Is valid: True - Validation Key: 0c4b15512be91401
     --------------------------------------------------------------------------------------------------
     
-Since I don't know about any PKD Test Environment, I will use a direct trust establishement mechanism here for demonstration...
+Since I don't know about any PKD for testing, I will use a direct trust establishement mechanism here using corresponding [demo-dsc.crt](./demo-dsc.crt)
 <img src="./images/trust-framework_interoperability_certificates.png" width="1000"/>
     
 Data from sample QR-Code: ( see [demo-token.b45](./demo-token.b45) )
